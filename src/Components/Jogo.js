@@ -8,10 +8,9 @@ export default function Jogo() {
     return (
         <>
             <div className="corpo">
-                <div className="imagem"><img src={`assets/forca${cont}.png`} /></div>
+                <div data-test="game-image" className="imagem"><img src={`assets/forca${cont}.png`} /></div>
                 <div className="coluna">
-                    <button onClick={Escolher} className="escolher">Escolher Palavra</button>
-                    <PalavraSorteada palavra={Escolher()}/>
+                    <button data-test="choose-word" onClick={Escolher} className="escolher">Escolher Palavra</button>
                 </div>
             </div>
         </>

@@ -49,8 +49,11 @@ export default function Escolher() {
 
     console.log(vazia);
     return (
-        <div className="palavra">
+        <div data-test="word" data-answer={palavras[i]} className="palavra">
             {vazia}
         </div>
     );
 }
+
+https://github.com/bvv94/projeto8-jogoforca.git,
+https://github.com/bvv94/projeto8-jogoforca
