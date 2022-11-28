@@ -1,7 +1,6 @@
 import Chute from "./Components/Chute";
 import Jogo from "./Components/Jogo";
 import Letras from "./Components/Letras";
-import palavras from "./palavras";
 
 export default function App() {
 

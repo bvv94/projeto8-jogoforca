@@ -1,5 +1,4 @@
 import Escolher from "../palavras";
-import PalavraSorteada from "./PalavraSorteada";
 
 export default function Jogo() {
 

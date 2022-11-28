@@ -25,19 +25,7 @@ const palavras = [
 ]
 
 export default function Escolher() {
-    const vazia = {
-        espaço: "_ ",espaço: "_ ",espaço: "_ ",espaço: "_ ",
-        espaço: "_ ",espaço: "_ ",espaço: "_ ",espaço: "_ ",
-        espaço: "_ ",espaço: "_ ",espaço: "_ ",espaço: "_ ",
-        espaço: "_ ",espaço: "_ ",espaço: "_ ",espaço: "_ ",
-        espaço: "_ ",espaço: "_ ",espaço: "_ ",espaço: "_ ",
-        espaço: "_ ",espaço: "_ ",espaço: "_ ",espaço: "_ ",
-        espaço: "_ ",espaço: "_ ",espaço: "_ ",espaço: "_ ",
-        espaço: "_ ",espaço: "_ ",espaço: "_ ",espaço: "_ ",
-        espaço: "_ ",espaço: "_ ",espaço: "_ ",espaço: "_ ",
-        espaço: "_ ",espaço: "_ ",espaço: "_ ",espaço: "_ "
-
-    };
+    const vazia = [];
     let i = Math.floor(Math.random() * palavras.length);
     console.log(palavras[i]);
 
@@ -49,11 +37,8 @@ export default function Escolher() {
 
     console.log(vazia);
     return (
-        <div data-test="word" data-answer={palavras[i]} className="palavra">
-            {vazia}
+        <div data-test="word" data-answer={palavras[i]} className="palavra">            
+            {vazia.map(x => <div>{x})</div>)}
         </div>
     );
 }
-
-https://github.com/bvv94/projeto8-jogoforca.git,
-https://github.com/bvv94/projeto8-jogoforca
