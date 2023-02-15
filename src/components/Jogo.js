@@ -14,8 +14,10 @@ export default function Jogo() {
         <>
             <Layout>
                 <Forca src="./assets/forca0.png" alt="Forca" />
-                <Escolher onClick={()=> Iniciar()}>Escolher Palavra</Escolher>
-                {/* <Escolher >Escolher Palavra</Escolher> */}
+                <Coluna>
+                    <Escolher onClick={() => Iniciar()}>Escolher Palavra</Escolher>
+                    <Palavra>___________</Palavra>
+                </Coluna>
             </Layout>
             <Teclado>
                 {alfabeto.map((a) => <Tecla key={a} disabled={habilitado} >{a}</Tecla>)}
@@ -23,8 +25,8 @@ export default function Jogo() {
         </>
     );
 
-    function Iniciar(){
-        alert ("Iniciar jogo")
+    function Iniciar() {
+        alert("Iniciar jogo")
         setHabilitado(!habilitado)
     }
 
@@ -46,12 +48,25 @@ const Escolher = styled.button`
             font-size: 20px;
             border-radius: 8px;
             `
+const Coluna = styled.div`
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+`            
 const Layout = styled.div`
             display: flex;
-            justify-content: space-around ;
+            justify-content: space-evenly ;
             margin-top: 20px;
-            margin-left: 5px;
+            margin-left: 5px;            
             `
+const Palavra = styled.div`
+            display: flex;
+            justify-content: space-around ;
+            font-family: 'Noto Sans';
+            font-weight: 700;
+            font-size: 50px;
+            letter-spacing: 5px;
+`
 const Teclado = styled.div`
             width: 664px;
             height: 91px;
@@ -63,7 +78,7 @@ const Teclado = styled.div`
 const Tecla = styled.button` 
             width: 40px;
             height: 40px;
-            background-color: ${ props => props.disabled ? "#9FAAB5" : "#E1ECF4"};
+            background-color: ${props => props.disabled ? "#9FAAB5" : "#E1ECF4"};
             color: ${props => props.disabled ? "#798A9F" : "#39739D"};
             border: 1px solid #7AA7C7;
             border-radius: 3px;
