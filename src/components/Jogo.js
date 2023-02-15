@@ -1,22 +1,35 @@
+import { useState } from "react";
 import styled from "styled-components";
 import alfabeto from "./Letras";
 
 export default function Jogo() {
 
-    const img = ["/home/brenda/Driven T10/projeto8-jogoforca/public/assets/assets/forca0.png"]
+    // const img = ["./assets/forca0.png","./assets/forca1.png","./assets/forca2.png","./assets/forca3.png",
+    // "./assets/forca4.png","./assets/forca5.png","./assets/forca6.png"]
+    // let [num, setNum] = 0;
+
+    const [habilitado, setHabilitado] = useState(true)
 
     return (
         <>
             <Layout>
                 <Forca src="./assets/forca0.png" alt="Forca" />
-                <Escolher>Escolher Palavra</Escolher>
+                <Escolher onClick={()=> Iniciar()}>Escolher Palavra</Escolher>
+                {/* <Escolher >Escolher Palavra</Escolher> */}
             </Layout>
             <Teclado>
-                {alfabeto.map((a) => <Tecla>{a}</Tecla>)}
+                {alfabeto.map((a) => <Tecla key={a} disabled={habilitado} >{a}</Tecla>)}
             </Teclado>
         </>
     );
+
+    function Iniciar(){
+        alert ("Iniciar jogo")
+        setHabilitado(!habilitado)
+    }
+
 }
+
 
 const Forca = styled.img`
             width: 400px;
@@ -47,11 +60,11 @@ const Teclado = styled.div`
             margin-left: 500px;
           `
 
-const Tecla = styled.button`
+const Tecla = styled.button` 
             width: 40px;
             height: 40px;
-            background-color: #9FAAB5;
-            color: #798A9F;
+            background-color: ${ props => props.disabled ? "#9FAAB5" : "#E1ECF4"};
+            color: ${props => props.disabled ? "#798A9F" : "#39739D"};
             border: 1px solid #7AA7C7;
             border-radius: 3px;
             margin-right: 11px;
