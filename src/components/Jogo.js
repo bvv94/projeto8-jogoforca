@@ -2,13 +2,17 @@ import { useState } from "react";
 import styled from "styled-components";
 import alfabeto from "./Letras";
 
-export default function Jogo() {
+export default function Jogo({palavras}) {
 
     // const img = ["./assets/forca0.png","./assets/forca1.png","./assets/forca2.png","./assets/forca3.png",
     // "./assets/forca4.png","./assets/forca5.png","./assets/forca6.png"]
     // let [num, setNum] = 0;
 
     const [habilitado, setHabilitado] = useState(true)
+    const [erros, setErros] = useState(0)
+    const [palavra, setPalavra] = useState("")
+    // let palavra = [];
+    let palavraSorte = "";
 
     return (
         <>
@@ -16,7 +20,7 @@ export default function Jogo() {
                 <Forca src="./assets/forca0.png" alt="Forca" />
                 <Coluna>
                     <Escolher onClick={() => Iniciar()}>Escolher Palavra</Escolher>
-                    <Palavra>___________</Palavra>
+                    <Palavra>{palavra}</Palavra>
                 </Coluna>
             </Layout>
             <Teclado>
@@ -27,7 +31,21 @@ export default function Jogo() {
 
     function Iniciar() {
         alert("Iniciar jogo")
-        setHabilitado(!habilitado)
+        setHabilitado(false)
+
+        // sortear palavra
+
+        palavraSorte = (palavras[Math.floor(Math.random() * palavras.length)])
+        
+        const espacos = [];
+
+        for (let i=0; i<palavraSorte.length; i++){
+            espacos.push("_")
+        }
+
+        setPalavra(espacos);
+        console.log(palavraSorte)
+
     }
 
 }
