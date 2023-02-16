@@ -4,15 +4,11 @@ import alfabeto from "./Letras";
 
 export default function Jogo({palavras}) {
 
-    // const img = ["./assets/forca0.png","./assets/forca1.png","./assets/forca2.png","./assets/forca3.png",
-    // "./assets/forca4.png","./assets/forca5.png","./assets/forca6.png"]
-    // let [num, setNum] = 0;
-
     const [habilitado, setHabilitado] = useState(true)
     const [erros, setErros] = useState(0)
     const [palavra, setPalavra] = useState("")
-    // let palavra = [];
-    let palavraSorte = "";
+    const [clicadas, setClicadas] =useState([])
+    let palavraSorte = [];
 
     return (
         <>
@@ -24,7 +20,7 @@ export default function Jogo({palavras}) {
                 </Coluna>
             </Layout>
             <Teclado>
-                {alfabeto.map((a) => <Tecla key={a} disabled={habilitado} >{a}</Tecla>)}
+                {alfabeto.map((a) => <Tecla key={a} disabled={habilitado} onClick={()=> Clique(a)}>{a}</Tecla>)}
             </Teclado>
         </>
     );
@@ -46,6 +42,30 @@ export default function Jogo({palavras}) {
         setPalavra(espacos);
         console.log(palavraSorte)
 
+    }
+
+    function Clique(letra){
+       
+        console.log(letra)
+        console.log(palavraSorte)
+        console.log(palavraSorte.length)
+
+        for (let i=0; i < palavraSorte.length; i++){
+            console.log(letra)
+            console.log(palavraSorte[i])
+            if(letra === palavraSorte[i]){
+                clicadas.push(letra)
+                console.log("entrou letra igual")
+            }
+            else{
+                clicadas.push("_")
+                console.log("entrou letra diferente")
+            }
+            console.log(clicadas)
+        }
+
+        setPalavra(clicadas)
+        console.log(clicadas)
     }
 
 }
