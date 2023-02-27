@@ -62,10 +62,10 @@ const Palavra = styled.div`
             margin-top: 300px;
             color: ${(props) => {
         if (props.cor === "vermelho") {
-            return "#880808"
+            return "#FF0000"
         }
         else if (props.cor === "verde") {
-            return "#008000"
+            return "#27AE60"
         }
         else {
             return "black"

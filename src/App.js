@@ -26,7 +26,7 @@ export default function App() {
 
 
   function iniciar() {
-    alert("Iniciar jogo")
+    // alert("Iniciar jogo")
     setClicadas([])
     setCor("preto")
     setErros(0)
