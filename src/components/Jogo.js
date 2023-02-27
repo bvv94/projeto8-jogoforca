@@ -1,76 +1,30 @@
-import { useState } from "react";
 import styled from "styled-components";
-import alfabeto from "./Letras";
+import forca0 from "../assets/forca0.png";
+import forca1 from "../assets/forca1.png";
+import forca2 from "../assets/forca2.png";
+import forca3 from "../assets/forca3.png";
+import forca4 from "../assets/forca4.png";
+import forca5 from "../assets/forca5.png";
+import forca6 from "../assets/forca6.png"
 
-export default function Jogo({palavras}) {
+export default function Jogo(props) {
 
-    const [habilitado, setHabilitado] = useState(true)
-    const [erros, setErros] = useState(0)
-    const [palavra, setPalavra] = useState("")
-    const [clicadas, setClicadas] =useState([])
-    let palavraSorte = [];
+    const { cor, espacos, iniciar, erros, habilitado, palavra } = props
+    const img = [forca0, forca1, forca2, forca3, forca4, forca5, forca6]
 
     return (
         <>
             <Layout>
-                <Forca src="./assets/forca0.png" alt="Forca" />
+                <Forca src={img[erros]} alt="Forca" />
                 <Coluna>
-                    <Escolher onClick={() => Iniciar()}>Escolher Palavra</Escolher>
-                    <Palavra>{palavra}</Palavra>
+                    <Escolher onClick={() => iniciar()}>Escolher Palavra</Escolher>
+                    <Palavra cor={cor}>{espacos}</Palavra>
                 </Coluna>
             </Layout>
-            <Teclado>
-                {alfabeto.map((a) => <Tecla key={a} disabled={habilitado} onClick={()=> Clique(a)}>{a}</Tecla>)}
-            </Teclado>
+
         </>
     );
-
-    function Iniciar() {
-        alert("Iniciar jogo")
-        setHabilitado(false)
-
-        // sortear palavra
-
-        palavraSorte = (palavras[Math.floor(Math.random() * palavras.length)])
-        
-        const espacos = [];
-
-        for (let i=0; i<palavraSorte.length; i++){
-            espacos.push("_")
-        }
-
-        setPalavra(espacos);
-        console.log(palavraSorte)
-
-    }
-
-    function Clique(letra){
-       
-        console.log(letra)
-        console.log(palavraSorte)
-        console.log(palavraSorte.length)
-
-        for (let i=0; i < palavraSorte.length; i++){
-            console.log(letra)
-            console.log(palavraSorte[i])
-            if(letra === palavraSorte[i]){
-                clicadas.push(letra)
-                console.log("entrou letra igual")
-            }
-            else{
-                clicadas.push("_")
-                console.log("entrou letra diferente")
-            }
-            console.log(clicadas)
-        }
-
-        setPalavra(clicadas)
-        console.log(clicadas)
-    }
-
 }
-
-
 const Forca = styled.img`
             width: 400px;
             height: 467px;
@@ -90,12 +44,14 @@ const Coluna = styled.div`
     justify-content: space-between;
     display: flex;
     flex-direction: column;
-`            
+`
 const Layout = styled.div`
+            width: 980px;
+            height: 466px;
             display: flex;
-            justify-content: space-evenly ;
-            margin-top: 20px;
-            margin-left: 5px;            
+            justify-content: space-around;
+            align-items: flex-start;
+            margin-top: 100px;           
             `
 const Palavra = styled.div`
             display: flex;
@@ -104,25 +60,14 @@ const Palavra = styled.div`
             font-weight: 700;
             font-size: 50px;
             letter-spacing: 5px;
-`
-const Teclado = styled.div`
-            width: 664px;
-            height: 91px;
-            display: wrap;
-            margin-top: 70px;
-            margin-left: 500px;
-          `
-
-const Tecla = styled.button` 
-            width: 40px;
-            height: 40px;
-            background-color: ${props => props.disabled ? "#9FAAB5" : "#E1ECF4"};
-            color: ${props => props.disabled ? "#798A9F" : "#39739D"};
-            border: 1px solid #7AA7C7;
-            border-radius: 3px;
-            margin-right: 11px;
-            margin-bottom: 11px;
-            font-family: 'roboto';
-            font-size: 16px;
-            font-weight: 700;
-            `
+            color: ${(props) => {
+        if (props.cor === "vermelho") {
+            return "#880808"
+        }
+        else if (props.cor === "verde") {
+            return "#008000"
+        }
+        else {
+            return "black"
+        }
+    }}`
