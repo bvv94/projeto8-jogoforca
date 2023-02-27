@@ -9,7 +9,7 @@ export default function Letras(props) {
     const {Clique, clicadas} = props;
     return (
         <Teclado>
-            {alfabeto.map((a) => <Tecla key={a} disabled={clicadas.includes(a)} onClick={() => Clique(a)}>{a}</Tecla>)}
+            {alfabeto.map((a) => <Tecla data-test="letter" key={a} disabled={clicadas.includes(a)} onClick={() => Clique(a)}>{a}</Tecla>)}
         </Teclado>
     )
 }

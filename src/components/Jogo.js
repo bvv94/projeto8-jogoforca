@@ -15,10 +15,10 @@ export default function Jogo(props) {
     return (
         <>
             <Layout>
-                <Forca src={img[erros]} alt="Forca" />
+                <Forca src={img[erros]} alt="Forca" data-test="game-image"/>
                 <Coluna>
-                    <Escolher onClick={() => iniciar()}>Escolher Palavra</Escolher>
-                    <Palavra cor={cor}>{espacos}</Palavra>
+                    <Escolher data-test="choose-word" onClick={() => iniciar()}>Escolher Palavra</Escolher>
+                    <Palavra data-test="word" cor={cor}>{espacos}</Palavra>
                 </Coluna>
             </Layout>
 

@@ -31,13 +31,14 @@ export default function App() {
     // sortear palavra
 
     const p = (palavras[Math.floor(Math.random() * palavras.length)])
-    const palavraSorte = p.split("")
+    const palavraSorteada = p.split("")
 
-    setPalavra(palavraSorte)
+    setPalavra(palavraSorteada)
 
     palavraSorte.forEach(() => espacos.push(" _"))
     setpalavraSorte(espacos)
     console.log(espacos)
+    console.log(palavra)
 
   }
 
