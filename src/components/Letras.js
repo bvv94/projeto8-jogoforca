@@ -6,10 +6,11 @@ const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m
 
 export default function Letras(props) {
 
-    const {Clique, clicadas} = props;
+    const {clique, clicadas} = props;
+
     return (
         <Teclado>
-            {alfabeto.map((a) => <Tecla data-test="letter" key={a} disabled={clicadas.includes(a)} onClick={() => Clique(a)}>{a}</Tecla>)}
+            {alfabeto.map((a) => <Tecla data-test="letter" key={a} disabled={clicadas.includes(a)} onClick={() => clique(a)}>{a}</Tecla>)}
         </Teclado>
     )
 }

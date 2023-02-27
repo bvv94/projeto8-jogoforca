@@ -20,7 +20,7 @@ export default function App() {
   return (
     <Tela>
       <Jogo cor={cor} palavraTela={palavraTela} palavra={palavra} erros={erros} iniciar={iniciar} />
-      <Letras clique={Clique} clicadas={clicadas} />
+      <Letras clique={clique} clicadas={clicadas} />
     </Tela>
   );
 
@@ -28,6 +28,8 @@ export default function App() {
   function iniciar() {
     alert("Iniciar jogo")
     setClicadas([])
+    setCor("preto")
+    setErros(0)
     // sortear palavra
 
     const p = (palavras[Math.floor(Math.random() * palavras.length)])
@@ -41,11 +43,11 @@ export default function App() {
     // console.log(palavra)
   }
 
-  function Clique(letra) {
+  function clique(letra) {
 
     console.log(letra)
     console.log(palavraTela)
-    console.log(palavraTela.length)
+    // console.log(palavraTela.length)
 
     setClicadas([...clicadas, letra]);
 
@@ -65,9 +67,10 @@ export default function App() {
       Errou()
     }
 
-
-
-
+    if(!palavranova.includes(" _")){
+      setCor("verde")
+      finalizar()
+    }
     console.log(clicadas)
   }
 
@@ -83,7 +86,7 @@ export default function App() {
 
   function finalizar() {
     setClicadas(alfabeto);
-
+    setpalavraTela(palavra)
   }
 
 }
