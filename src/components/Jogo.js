@@ -9,7 +9,7 @@ import forca6 from "../assets/forca6.png"
 
 export default function Jogo(props) {
 
-    const { cor, espacos, iniciar, erros, habilitado, palavra } = props
+    const { cor, espacos, iniciar, erros, habilitado, palavra, palavraTela } = props
     const img = [forca0, forca1, forca2, forca3, forca4, forca5, forca6]
 
     return (
@@ -18,7 +18,7 @@ export default function Jogo(props) {
                 <Forca src={img[erros]} alt="Forca" data-test="game-image"/>
                 <Coluna>
                     <Escolher data-test="choose-word" onClick={() => iniciar()}>Escolher Palavra</Escolher>
-                    <Palavra data-test="word" cor={cor}>{espacos}</Palavra>
+                    <Palavra data-test="word" cor={cor}>{palavraTela}</Palavra>
                 </Coluna>
             </Layout>
 
@@ -41,7 +41,6 @@ const Escolher = styled.button`
             border-radius: 8px;
             `
 const Coluna = styled.div`
-    justify-content: space-between;
     display: flex;
     flex-direction: column;
 `
@@ -60,6 +59,7 @@ const Palavra = styled.div`
             font-weight: 700;
             font-size: 50px;
             letter-spacing: 5px;
+            margin-top: 300px;
             color: ${(props) => {
         if (props.cor === "vermelho") {
             return "#880808"

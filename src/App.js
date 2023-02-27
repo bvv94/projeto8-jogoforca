@@ -13,13 +13,13 @@ export default function App() {
   const [erros, setErros] = useState(0)
   const [palavra, setPalavra] = useState([]) // palavra sorteada
   const [clicadas, setClicadas] = useState(alfabeto)
-  let [palavraSorte, setpalavraSorte] = useState([]); //palavra traços
+  let [palavraTela, setpalavraTela] = useState([]); //palavra traços
   let espacos = [];
   const [cor, setCor] = useState("preto")
 
   return (
     <Tela>
-      <Jogo cor={cor} espacos={espacos} palavra={palavra} erros={erros} iniciar={iniciar} />
+      <Jogo cor={cor} palavraTela={palavraTela} palavra={palavra} erros={erros} iniciar={iniciar} />
       <Letras clique={Clique} clicadas={clicadas} />
     </Tela>
   );
@@ -32,25 +32,24 @@ export default function App() {
 
     const p = (palavras[Math.floor(Math.random() * palavras.length)])
     const palavraSorteada = p.split("")
-
+    console.log(palavraSorteada)
     setPalavra(palavraSorteada)
 
-    palavraSorte.forEach(() => espacos.push(" _"))
-    setpalavraSorte(espacos)
+    palavraSorteada.forEach(() => espacos.push(" _"))
+    setpalavraTela(espacos)
     console.log(espacos)
-    console.log(palavra)
-
+    // console.log(palavra)
   }
 
   function Clique(letra) {
 
     console.log(letra)
-    console.log(palavraSorte)
-    console.log(palavraSorte.length)
+    console.log(palavraTela)
+    console.log(palavraTela.length)
 
     setClicadas([...clicadas, letra]);
 
-    const palavranova = [...palavraSorte]
+    const palavranova = [...palavraTela]
     if (palavra.includes(letra)) {
 
       console.log("entrou letra igual")
@@ -60,7 +59,7 @@ export default function App() {
           palavranova[i] = letraescolha
         }
       })
-      setpalavraSorte(palavranova);
+      setpalavraTela(palavranova);
     }
     else {
       Errou()
@@ -83,6 +82,7 @@ export default function App() {
   }
 
   function finalizar() {
+    setClicadas(alfabeto);
 
   }
 
